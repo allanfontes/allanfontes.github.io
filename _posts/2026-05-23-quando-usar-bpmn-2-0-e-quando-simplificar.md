@@ -5,30 +5,34 @@ date: 2026-05-23 12:00:00 -0300
 categories: blog
 ---
 
-BPMN 2.0 é uma notação poderosa para modelagem técnica e automação, mas nem todo público ou objetivo exige esse nível de formalidade. Saber **quando aprofundar** e **quando simplificar** é sinal de maturidade técnica.
+<img src="{{ '/images/capa-bpmn-simplificar.png' | relative_url }}" alt="Capa do post: Quando usar BPMN 2.0 e quando simplificar" />
+
+BPMN 2.0 é uma notação poderosa para modelagem técnica e automação, mas nem todo público ou objetivo exige esse nível de formalidade. Saber quando aprofundar e quando simplificar é sinal de maturidade técnica.
 
 ## Quando usar BPMN 2.0
 
-- **Preparar modelos para automação** ou integração com sistemas de workflow.  
-- **Documentar processos complexos** com múltiplos participantes, gateways, paralelismos e regras de negócio.  
-- **Comunicar com equipes técnicas** (desenvolvedores, analistas de processos, arquitetos de TI).
+- Preparar modelos para automação ou integração com ferramentas.
+- Documentar processos complexos com múltiplos participantes, gateways e regras.
+- Comunicar com equipes técnicas e analistas de processos.
 
 ## Quando simplificar
 
-- **Nivelamento com públicos não técnicos**: gestores, servidores com pouca familiaridade com BPM.  
-- **Primeiras sessões de levantamento**, focadas em entender o fluxo principal.  
-- **Comunicação executiva**: um fluxograma simples ou um passo-a-passo é mais eficaz do que um diagrama denso.
+- Nivelamento com públicos não técnicos.
+- Primeiras sessões de levantamento, focadas no fluxo essencial.
+- Comunicação executiva, em que um diagrama simples é mais eficaz que um modelo denso.
 
-## Estratégia prática para usar o nível certo de detalhe
+## Estratégia prática
 
-- **Inicie com uma visão macro**: um fluxograma simples ou um “mapa de alto nível” do processo.  
-- **Valide com os usuários** e ajuste o que faz sentido.  
-- **Só depois**, se houver necessidade de detalhamento técnico ou automação, aprofunde em BPMN 2.0.
+- Inicie com uma visão macro, como um fluxograma simples.
+- Valide com os usuários e ajuste o que fizer sentido.
+- Só depois aprofunde em BPMN 2.0, se houver necessidade técnica.
 
-Uma boa prática é **manter duas versões**:
+Uma boa prática é manter duas versões:
 
-- **Visão de gestão**: simplificada, objetiva, usada em reuniões com gestores e equipes não técnicas.  
-- **Visão técnica**: em BPMN 2.0, mais detalhada, usada em análises profundas, automação e especialistas.
+- Visão de gestão: simplificada, objetiva e usada com gestores e equipes não técnicas.
+- Visão técnica: em BPMN 2.0, mais detalhada, usada em análises profundas e automação.
+
+O nível de detalhe deve seguir o usuário e o objetivo, não o contrário. Um BPM bem usado começa com clareza, não com complexidade.álises profundas, automação e especialistas.
 
 ## Conclusão
 
