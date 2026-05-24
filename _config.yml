@@ -1,0 +1,6 @@
+title: Allan Fontes | BPM
+description: Site profissional sobre BPM, BPMN 2.0, mapeamento de processos, palestras e cursos.
+lang: pt-BR
+markdown: kramdown
+plugins:
+  - jekyll-feed

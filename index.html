@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allan Fontes | BPM e Mapeamento de Processos</title>
+  <meta name="description" content="Palestras e capacitações em BPM e BPMN 2.0 para o setor público. Conteúdos práticos para mapear, padronizar e melhorar processos." />
+  <meta property="og:title" content="Allan Fontes | BPM e Mapeamento de Processos" />
+  <meta property="og:description" content="Palestras, capacitações e artigos sobre BPM, BPMN 2.0 e mapeamento de processos no setor público." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f5c63" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root, [data-theme="light"] {
+      --color-bg:#f7f6f2;--color-surface:#fbfaf7;--color-surface-2:#f1eeea;--color-border:#d7d2cb;--color-text:#26231f;--color-text-muted:#6e6b66;--color-primary:#0f5c63;--color-primary-hover:#0a4449;--color-primary-soft:#d9e7e8;
+      --radius-sm:.5rem;--radius-md:.9rem;--radius-lg:1.3rem;--shadow-sm:0 8px 24px rgba(22,25,28,.06);--shadow-lg:0 18px 50px rgba(22,25,28,.11);
+      --space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;
+      --text-xs:.82rem;--text-sm:.95rem;--text-base:1.03rem;--text-lg:1.25rem;--text-xl:clamp(1.7rem,1.2rem + 1vw,2.3rem);--text-2xl:clamp(2.6rem,1.2rem + 3vw,4.5rem);
+      --content:1120px;--font-body:'Inter',sans-serif;--font-display:'Instrument Serif',serif;
+    }
+    [data-theme="dark"] {
+      --color-bg:#151412;--color-surface:#1d1b18;--color-surface-2:#25231f;--color-border:#3a3631;--color-text:#efebe5;--color-text-muted:#bbb4ab;--color-primary:#66aeb3;--color-primary-hover:#8dc8cc;--color-primary-soft:#213538;--shadow-sm:0 8px 24px rgba(0,0,0,.22);--shadow-lg:0 18px 50px rgba(0,0,0,.34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.65;
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    p { max-width: 68ch; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--content));
+      margin: auto;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+    }
+    .skip:focus {
+      left: 1rem;
+      top: 1rem;
+      background: var(--color-primary);
+      color: #fff;
+      padding: .75rem 1rem;
+      border-radius: var(--radius-sm);
+      z-index: 99;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      font-weight: 700;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-mark svg {
+      width: 24px;
+      height: 24px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .nav-links a:hover {
+      color: var(--color-text);
+    }
+    .theme-toggle {
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      padding: .65rem .85rem;
+      background: var(--color-surface);
+    }
+
+    .hero {
+      padding: clamp(4rem,10vw,8rem) 0 3rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .5rem .9rem;
+      border-radius: 999px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      line-height: 1.08;
+      margin: 0 0 1rem;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 400;
+      max-width: 12ch;
+      letter-spacing: -.03em;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 400;
+    }
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 2rem;
+      align-items: end;
+    }
+    .hero-copy p {
+      font-size: 1.08rem;
+      color: var(--color-text-muted);
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .hero-card, .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-card {
+      padding: 1.4rem;
+    }
+    .hero-stat {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .stat {
+      padding: 1rem;
+      border-radius: 1rem;
+      background: var(--color-surface-2);
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: .2rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+    .muted {
+      color: var(--color-text-muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .card {
+      padding: 1.35rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: .35rem .65rem;
+      border-radius: 999px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      margin-bottom: 1rem;
+    }
+
+    .list {
+      display: grid;
+      gap: .8rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .list li {
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .feature {
+      padding: 1.2rem;
+      border-radius: 1rem;
+      background: var(--color-surface-2);
+      border: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
+    }
+
+    .post {
+      display: grid;
+      gap: .7rem;
+    }
+    .post time {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--color-text-muted);
+    }
+
+    .cta {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--color-primary-soft), var(--color-surface));
+      border: 1px solid var(--color-border);
+    }
+
+    footer {
+      padding: 2.5rem 0 4rem;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .section-head, .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        max-width: 13ch;
+      }
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .nav-links {
+        gap: .8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Allan Fontes, início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M4 18L12 5l8 13" />
+            <path d="M8.5 13h7" />
+          </svg>
+        </span>
+        <span>Allan Fontes | BPM</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#palestras">Palestras</a>
+        <a href="#blog">Blog</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">
+        ◐
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">BPM e Mapeamento de Processos na prática para organizações públicas</span>
+          <h1>Capacitações, palestras e conteúdos aplicados para equipes que precisam mapear, padronizar e melhorar rotinas com clareza e resultado.</h1>
+          <p>Sou professor e palestrante em BPM e BPMN 2.0, com foco em capacitações práticas para o setor público. Ofereço cursos de nivelamento, oficinas aplicadas com exercícios em ferramentas e palestras práticas que conectam técnica e execução.</p>
+          <p class="muted">+500 servidores capacitados em mapeamento de processos e soluções aplicadas ao serviço público.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contato">
+              Solicitar palestra ou capacitação
+            </a>
+            <a class="btn btn-secondary" href="#blog">
+              Ver artigos e materiais
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Destaques profissionais">
+          <span class="tag">Autoridade em BPM</span>
+          <p class="muted">Conteúdo técnico, linguagem didática e aplicação prática para equipes que precisam mapear, padronizar, analisar e melhorar processos.</p>
+
+          <div class="hero-stat">
+            <div class="stat"><strong>+500</strong><span>servidores capacitados</span></div>
+            <div class="stat"><strong>16h</strong><span>modelo de capacitação prática</span></div>
+            <div class="stat"><strong>BPMN 2.0</strong><span>ênfase em modelagem aplicada</span></div>
+            <div class="stat"><strong>Setor público</strong><span>foco em governança e rotina real</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Sobre</span>
+            <h2>Autoridade técnica com linguagem acessível.</h2>
+          </div>
+          <p class="muted">Allan Fontes atua com gestão de processos, BPM e capacitação profissional, conectando fundamentação técnica, experiência prática e didática voltada à realidade institucional. Seu posicionamento é direcionado a órgãos públicos, escolas de governo e organizações que desejam profissionalizar seus processos com mais clareza e eficiência.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Especialização aplicada</h3>
+            <p class="muted">Conteúdos sobre BPM, BPMN 2.0, mapeamento, padronização, melhoria contínua, governança e desenho de rotinas com foco em execução.</p>
+          </article>
+
+          <article class="card">
+            <h3>Experiência em capacitação</h3>
+            <p class="muted">Formação de servidores e equipes em contextos que exigem objetividade, aderência institucional e transformação do conteúdo em prática utilizável.</p>
+          </article>
+
+          <article class="card">
+            <h3>Comunicação de autoridade</h3>
+            <p class="muted">Artigos, palestras e materiais pensados para consolidar presença profissional e ampliar visibilidade junto a instituições contratantes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="palestras">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Palestras e cursos</span>
+            <h2>Temas para eventos, capacitações e turmas in company.</h2>
+          </div>
+          <p class="muted">Os formatos podem ser adaptados para palestras, workshops e programas de formação. A proposta é unir nivelamento conceitual, linguagem objetiva, contextualização setorial e prática aplicada com exemplos aderentes ao cotidiano da administração pública.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Temas de destaque</h3>
+            <ul class="list">
+              <li>Mapeamento de Processos na prática com BPMN 2.0.</li>
+              <li>Como estruturar iniciativas de BPM no setor público.</li>
+              <li>Processos, governança, riscos e controles internos.</li>
+              <li>Erros comuns em desenho e análise de processos.</li>
+              <li>Padronização de rotinas e melhoria organizacional.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Diferenciais da abordagem</h3>
+            <div class="feature">
+              <strong>Clareza conceitual</strong>
+              <br /><span class="muted">Explicação acessível sem perder consistência técnica.</span>
+            </div>
+            <div class="feature" style="margin-top:1rem">
+              <strong>Aplicação real</strong>
+              <br /><span class="muted">Exercícios e exemplos com aderência à realidade institucional.</span>
+            </div>
+            <div class="feature" style="margin-top:1rem">
+              <strong>Posicionamento profissional</strong>
+              <br /><span class="muted">Conteúdo que forma equipes e também fortalece cultura de processos.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Blog</span>
+            <h2>Artigos para consolidar presença e gerar confiança.</h2>
+          </div>
+          <p class="muted">O blog é a sua base de autoridade. Ele mostra domínio técnico, visão prática e consistência editorial, sem depender apenas de rede social para ser encontrado.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card post">
+            <time datetime="2026-05-23">23 maio 2026</time>
+            <h3>O que é BPM na prática no setor público</h3>
+            <p class="muted">
+              BPM (Business Process Management) na prática é menos sobre diagramas perfeitos e mais sobre transformar como o trabalho acontece. No setor público, isso significa alinhar responsabilidades, reduzir retrabalho e garantir que cada rotina entregue valor à administração e ao cidadão.
+            </p>
+          </article>
+
+          <article class="card post">
+            <time datetime="2026-05-23">23 maio 2026</time>
+            <h3>5 erros comuns em mapeamento de processos</h3>
+            <p class="muted">
+              Mapear processos é ferramenta de gestão — mas muitos projetos falham por erros recorrentes. Identificar e evitar esses erros aumenta a utilidade do mapeamento e o retorno das iniciativas.
+            </p>
+          </article>
+
+          <article class="card post">
+            <time datetime="2026-05-23">23 maio 2026</time>
+            <h3>Quando usar BPMN 2.0 e quando simplificar</h3>
+            <p class="muted">
+              BPMN 2.0 é poderoso para modelagem técnica e automação, mas nem todo público ou objetivo exige esse nível de formalidade. Saber quando aprofundar e quando simplificar é sinal de maturidade técnica.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="agenda">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Agenda e mídia</span>
+            <h2>Espaço para visibilidade institucional.</h2>
+          </div>
+          <p class="muted">
+            Use esta seção para registrar eventos, fotos de capacitações, participações em instituições, depoimentos e resultados alcançados. Isso transforma o site em um portfólio vivo de autoridade.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Como preencher esta área depois</h3>
+          <ul class="list">
+            <li>Adicionar eventos realizados e futuras agendas.</li>
+            <li>Inserir logos de instituições atendidas.</li>
+            <li>Publicar fotos profissionais de palestras e turmas.</li>
+            <li>Destacar depoimentos curtos e objetivos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="cta">
+          <span class="tag">Contato profissional</span>
+          <h2>Convites para palestras, cursos e ações institucionais.</h2>
+          <p class="muted">
+            Substitua os campos abaixo pelos seus canais oficiais antes de publicar. Você pode usar e-mail, LinkedIn, Instagram profissional e até um formulário do Google.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:seuemail@exemplo.com">
+              seuemail@exemplo.com
+            </a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a class="btn btn-secondary" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        © 2026 Allan Fontes. Site profissional sobre BPM, mapeamento de processos, palestras e capacitação.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      btn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+      });
+    })();
+  </script>
+</body>
+</html>
