@@ -1,5 +1,3 @@
----
----
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -72,6 +70,13 @@
       display:grid;
       place-items:center;
       box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .brand-mark img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
     .menu{
@@ -427,7 +432,9 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="brand-mark">A</div>
+        <div class="brand-mark">
+          <img src="images/logo-allan-fontes.png" alt="Logo Allan Fontes">
+        </div>
         <span>Allan Fontes | BPM</span>
       </div>
       <nav class="menu">
@@ -446,7 +453,7 @@
       <div class="hero-grid">
         <div class="hero-media">
           <div class="panel">
-            <img src="{{ '/images/Banner Site Allan Fontes.png' | relative_url }}" alt="Banner principal do site Allan Fontes" />
+            <img src="images/banner-site-allan-fontes.jpg" alt="Banner principal do site Allan Fontes" />
           </div>
         </div>
         <div class="hero-copy">
@@ -466,7 +473,7 @@
     <section class="support">
       <div class="container">
         <div class="support-panel">
-          <img src="{{ '/images/Foto de perfil Allan_01.jpeg' | relative_url }}" alt="Foto de Allan Fontes" />
+          <img src="images/foto-de-perfil-allan-01.jpg" alt="Foto de Allan Fontes" />
         </div>
       </div>
     </section>
@@ -529,8 +536,8 @@
         <p class="section-intro">Conteúdos recentes sobre BPM, processos e boas práticas de gestão.</p>
         <div class="cards">
           <article class="card post-card">
-            <a href="{{ '/2026/05/23/o-que-e-bpm-na-pratica-no-setor-publico.html' | relative_url }}">
-              <img src="{{ '/images/Capa 1 - BPM no Setor Público.png' | relative_url }}" alt="Capa do artigo sobre BPM no setor público" />
+            <a href="2026/05/23/o-que-e-bpm-na-pratica-no-setor-publico.html">
+              <img src="images/capa-1-bpm-no-setor-publico.jpg" alt="Capa do artigo sobre BPM no setor público" />
               <div class="post-body">
                 <time datetime="2026-05-23">23 maio 2026</time>
                 <h3>O que é BPM na prática no setor público</h3>
@@ -539,8 +546,8 @@
             </a>
           </article>
           <article class="card post-card">
-            <a href="{{ '/2026/05/23/5-erros-comuns-em-mapeamento-de-processos.html' | relative_url }}">
-              <img src="{{ '/images/Capa 2 - 05 erros comuns no mapeamento.png' | relative_url }}" alt="Capa do artigo sobre erros de mapeamento de processos" />
+            <a href="2026/05/23/5-erros-comuns-em-mapeamento-de-processos.html">
+              <img src="images/capa-2-05-erros-comuns-mapeamento.jpg" alt="Capa do artigo sobre erros de mapeamento de processos" />
               <div class="post-body">
                 <time datetime="2026-05-23">23 maio 2026</time>
                 <h3>5 erros comuns em mapeamento de processos</h3>
@@ -549,8 +556,8 @@
             </a>
           </article>
           <article class="card post-card">
-            <a href="{{ '/2026/05/23/quando-usar-bpmn-2-0-e-quando-simplificar.html' | relative_url }}">
-              <img src="{{ '/images/Capa 3 - Quando usar BPMN.png' | relative_url }}" alt="Capa do artigo sobre quando usar BPMN" />
+            <a href="2026/05/23/quando-usar-bpmn-2-0-e-quando-simplificar.html">
+              <img src="images/capa-3-quando-usar-bpmn.jpg" alt="Capa do artigo sobre quando usar BPMN" />
               <div class="post-body">
                 <time datetime="2026-05-23">23 maio 2026</time>
                 <h3>Quando usar BPMN 2.0 e quando simplificar</h3>
